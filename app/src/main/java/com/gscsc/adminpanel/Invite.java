@@ -75,7 +75,7 @@ public class Invite extends AppCompatActivity {
                 System.out.println("ID IS "+ serial.get(serial.size()-1));
                 serialNumber = Integer.parseInt(serial.get(serial.size()-1));
                 serialNumber++;
-                this.serial.setText(String.valueOf("Serial No: "+serialNumber));
+                this.serial.setText("Serial No: "+serialNumber);
 
             } else {
                 System.out.println("Error getting documents: "+ task.getException());
