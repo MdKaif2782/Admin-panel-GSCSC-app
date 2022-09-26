@@ -88,11 +88,12 @@
                     android:id="@+id/forgotPassword"
             />
         </com.google.android.material.textfield.TextInputLayout>
-        <Button android:layout_width="100dp"
-                android:layout_height="50dp"
+        <Button android:layout_width="182dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="Login"
+                android:background="@drawable/rounded_corners"
                 android:id="@+id/login"
                 android:onClick="login"
         />
