@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -63,7 +64,8 @@ public class Invite extends AppCompatActivity {
     }
 
     public void updateSerial() {
-        //read data from collection Permissions
+        CircularProgressIndicator progressIndicator = findViewById(R.id.progress_indicator);
+        progressIndicator.setVisibility(View.VISIBLE);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference permissions = db.collection("Permissions");
         ArrayList<String> serial = new ArrayList<>();
@@ -76,6 +78,10 @@ public class Invite extends AppCompatActivity {
                 serialNumber = Integer.parseInt(serial.get(serial.size()-1));
                 serialNumber++;
                 this.serial.setText("Serial No: "+serialNumber);
+                runOnUiThread(() -> {
+                    progressIndicator.setVisibility(View.GONE);
+                    this.serial.setVisibility(View.VISIBLE);
+                });
 
             } else {
                 System.out.println("Error getting documents: "+ task.getException());

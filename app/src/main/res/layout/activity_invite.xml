@@ -6,7 +6,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Invite">
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:visibility="gone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:indicatorColor="@color/black"
+            app:indicatorInset="2dp"
+            app:indicatorSize="50dp"
+android:id="@+id/progress_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/email_input" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.812"/>
     <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Serial Number: xxxxx"
