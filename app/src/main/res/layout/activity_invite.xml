@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
+        android:layout_weight="100"
         tools:context=".Invite">
     <ImageView
             android:layout_width="45dp"
@@ -13,8 +14,10 @@
             android:src="@drawable/clublogo"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:id="@+id/imageView2"/>
-    <ImageView android:layout_height="281dp"
-               android:layout_width="292dp"
+    <ImageView android:layout_height="218dp"
+               android:layout_width="234dp"
+               app:layout_constraintHorizontal_weight="30"
+               app:layout_constraintVertical_weight="30"
                android:layout_marginHorizontal="80dp"
                android:src="@drawable/login_illus"
                app:layout_constraintStart_toStartOf="parent"
@@ -31,14 +34,14 @@
             android:fontFamily="sans-serif-condensed-light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="24dp"
             android:id="@+id/textView"
-            app:layout_constraintBottom_toTopOf="@+id/serial_number"/>
+            app:layout_constraintBottom_toTopOf="@+id/serial_number" app:layout_constraintHorizontal_bias="0.498"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:text="SERIAL NUMBER = XXXX"
               android:textSize="18sp"
               android:textColor="#4C4B4B"
-              android:layout_marginBottom="32dp"
+              android:layout_marginBottom="20dp"
               android:fontFamily="sans-serif-condensed-light"
               app:layout_constraintBottom_toTopOf="@+id/textInputLayout4" app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent" android:id="@+id/serial_number"/>
@@ -77,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I'm sure about to invite this user"
+            android:id="@+id/checkbox"
             app:layout_constraintBottom_toTopOf="@+id/submit_invite"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

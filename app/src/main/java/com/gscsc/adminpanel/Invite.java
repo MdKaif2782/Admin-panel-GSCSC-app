@@ -32,7 +32,7 @@ public class Invite extends AppCompatActivity {
         context = this;
         email = findViewById(R.id.email_input);
         serial = findViewById(R.id.serial_number);
-        checkBox = findViewById(R.id.submit_invite);
+        checkBox = findViewById(R.id.checkbox);
         updateSerial();
     }
 

@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         circularProgressDrawable.setCenterRadius(35f);
         circularProgressDrawable.setColorFilter(getResources().getColor(R.color.purple_500), android.graphics.PorterDuff.Mode.SRC_IN);
         circularProgressDrawable.start();
-        Glide.with(context).load(circularProgressDrawable).into(progressBar);
+
 
 
         String emailText = email.getText().toString();
