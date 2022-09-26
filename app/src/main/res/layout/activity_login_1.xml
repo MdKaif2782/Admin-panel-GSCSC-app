@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".LoginActivity"><![CDATA[/>
 
     ]]>
@@ -39,17 +40,15 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_baseline_email_24"
+            android:hint="Email"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/textInputLayout4">
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Email"
+                android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
-                android:imeOptions="actionNext"
-                android:autofillHints="emailAddress"
                 android:importantForAutofill="yes"
                 android:layout_marginBottom="15dp"
                 android:layout_marginHorizontal="30dp"
@@ -63,7 +62,7 @@
             app:endIconMode="password_toggle"
             android:id="@+id/textInputLayout3" app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -92,18 +91,11 @@
             android:text="Login"
             android:background="@drawable/rounded_corners"
             android:id="@+id/login"
+            android:textStyle="bold"
+            android:textColor="#E1DFDF"
             android:onClick="login"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageView
-            android:layout_width="35dp"
-            android:foregroundGravity="center"
-            android:layout_height="35dp"
-            android:id="@+id/progress_bar_login"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            app:layout_constraintBottom_toTopOf="@+id/login" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

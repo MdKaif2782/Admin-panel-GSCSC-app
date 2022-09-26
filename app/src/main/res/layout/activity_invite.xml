@@ -5,48 +5,82 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".Invite">
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:visibility="gone"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:indicatorColor="@color/black"
-            app:indicatorInset="2dp"
-            app:indicatorSize="50dp"
-android:id="@+id/progress_indicator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/email_input" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.812"/>
+    <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/clublogo"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:id="@+id/imageView2"/>
+    <ImageView android:layout_height="281dp"
+               android:layout_width="292dp"
+               android:layout_marginHorizontal="80dp"
+               android:src="@drawable/login_illus"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:id="@+id/imageView" app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintBottom_toTopOf="@+id/textView"/>
+
     <TextView
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Serial Number: xxxxx"
-            android:textSize="30sp"
-            android:textColor="@color/black"
-            android:id="@+id/serial_number"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.79" app:layout_constraintBottom_toTopOf="@+id/email_input"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter Email"
-            android:textSize="30sp"
-            android:textColor="@color/black"
-            android:id="@+id/email_input"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.514" app:layout_constraintVertical_bias="0.552"/>
-    <Button
+            android:text="INVITE USER"
+            android:textSize="24sp"
+            android:textColor="#4C4B4B"
+            android:fontFamily="sans-serif-condensed-light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="50dp"
+            android:id="@+id/textView"
+            app:layout_constraintBottom_toTopOf="@+id/serial_number"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="SERIAL NUMBER = XXXX"
+              android:textSize="18sp"
+              android:textColor="#4C4B4B"
+              android:layout_marginBottom="32dp"
+              android:fontFamily="sans-serif-condensed-light"
+              app:layout_constraintBottom_toTopOf="@+id/textInputLayout4" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent" android:id="@+id/serial_number"/>
+    <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Invite"
-            android:id="@+id/submit_invite"
-            android:layout_marginHorizontal="100dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            android:hint="Email"
+            android:layout_marginTop="80dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textInputLayout4">
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:importantForAutofill="yes"
+                android:layout_marginBottom="15dp"
+                android:layout_marginHorizontal="30dp"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="182dp"
+            android:layout_height="52dp"
+            android:background="@drawable/rounded_corners"
+            android:text="INVITE"
+            android:textStyle="bold"
+            android:textColor="#C8C5C5"
             android:onClick="onInviteButtonPressed"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.514" app:layout_constraintVertical_bias="0.752"/>
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:id="@+id/submit_invite"/>
+    <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I'm sure about to invite this user"
+            app:layout_constraintBottom_toTopOf="@+id/submit_invite"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

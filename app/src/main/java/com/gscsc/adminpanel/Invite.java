@@ -2,6 +2,7 @@ package com.gscsc.adminpanel;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class Invite extends AppCompatActivity {
     private EditText email;
     private Context context;
     private int serialNumber;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class Invite extends AppCompatActivity {
         context = this;
         email = findViewById(R.id.email_input);
         serial = findViewById(R.id.serial_number);
-
+        checkBox = findViewById(R.id.submit_invite);
         updateSerial();
     }
 
@@ -40,32 +42,34 @@ public class Invite extends AppCompatActivity {
         finish();
     }
     public void onInviteButtonPressed(View view) {
-        String emailText = email.getText().toString();
-        if (emailText.isEmpty()) {
-            System.out.println("Email is empty");
-            Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            System.out.println("Email is not empty");
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                            System.out.println("Invitation Sent");
-                            email.setText("");
-                            updateSerial();
-                        } else {
-                            Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
-                            System.out.println("Invitation Failed");
-                        }
-                    });
+        if (checkBox.isChecked()) {
+            String emailText = email.getText().toString();
+            if (emailText.isEmpty()) {
+                System.out.println("Email is empty");
+                Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
+            } else {
+                System.out.println("Email is not empty");
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
+                                System.out.println("Invitation Sent");
+                                email.setText("");
+                                updateSerial();
+                            } else {
+                                Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
+                                System.out.println("Invitation Failed");
+                            }
+                        });
+            }
+        } else {
+            Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void updateSerial() {
-        CircularProgressIndicator progressIndicator = findViewById(R.id.progress_indicator);
-        progressIndicator.setVisibility(View.VISIBLE);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference permissions = db.collection("Permissions");
         ArrayList<String> serial = new ArrayList<>();
@@ -79,7 +83,6 @@ public class Invite extends AppCompatActivity {
                 serialNumber++;
                 this.serial.setText("Serial No: "+serialNumber);
                 runOnUiThread(() -> {
-                    progressIndicator.setVisibility(View.GONE);
                     this.serial.setVisibility(View.VISIBLE);
                 });
 
