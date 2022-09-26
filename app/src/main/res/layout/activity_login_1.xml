@@ -96,9 +96,9 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:foregroundGravity="center"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:id="@+id/progress_bar_login"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
             app:layout_constraintBottom_toTopOf="@+id/login" app:layout_constraintEnd_toEndOf="parent"

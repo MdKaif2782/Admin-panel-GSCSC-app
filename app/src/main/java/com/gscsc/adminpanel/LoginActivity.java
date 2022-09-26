@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void login(View v){
         CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
-        circularProgressDrawable.setStrokeWidth(2f);
-        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.setStrokeWidth(4f);
+        circularProgressDrawable.setCenterRadius(35f);
         circularProgressDrawable.setColorFilter(getResources().getColor(R.color.purple_500), android.graphics.PorterDuff.Mode.SRC_IN);
         circularProgressDrawable.start();
         Glide.with(context).load(circularProgressDrawable).into(progressBar);
