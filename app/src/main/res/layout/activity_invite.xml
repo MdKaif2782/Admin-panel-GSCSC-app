@@ -48,7 +48,6 @@
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_baseline_email_24"
             android:hint="Email"
             android:layout_marginTop="80dp"
@@ -60,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
+                android:background="@drawable/outlined_box"
                 android:importantForAutofill="yes"
                 android:layout_marginBottom="15dp"
                 android:layout_marginHorizontal="30dp"

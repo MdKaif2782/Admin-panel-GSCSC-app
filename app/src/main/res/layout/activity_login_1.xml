@@ -38,9 +38,11 @@
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_baseline_email_24"
+            android:gravity="center"
+            android:foregroundGravity="center"
             android:hint="Email"
+
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/textInputLayout4">
@@ -49,6 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
+                android:textColorLink="@color/TRANSPARENT"
+                android:background="@drawable/outlined_box"
                 android:importantForAutofill="yes"
                 android:layout_marginBottom="15dp"
                 android:layout_marginHorizontal="30dp"
@@ -57,7 +61,6 @@
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_baseline_lock_24"
             app:endIconMode="password_toggle"
             android:id="@+id/textInputLayout3" app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
@@ -65,9 +68,10 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:background="@drawable/outlined_box"
                 android:imeOptions="actionNext"
                 android:autofillHints="password"
                 android:importantForAutofill="yes"
