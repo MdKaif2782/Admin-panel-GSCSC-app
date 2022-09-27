@@ -55,6 +55,7 @@ public class Invite extends AppCompatActivity {
     }
 
     public void onInviteButtonPressed(View view) {
+            Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
             Log.d("Invite", "Button Pressed");
             if (checkBox.isChecked()) {
@@ -63,43 +64,47 @@ public class Invite extends AppCompatActivity {
                     System.out.println("Email is empty");
                     Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    System.out.println("Email is not empty");
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    db.collection("Permissions")
-                            .whereEqualTo("email",emailText)
-                            .get().addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    for (DocumentSnapshot document : task.getResult()) {
-                                        if (document.getString("email").equals(emailText)) {
-                                            emailIsInDatabase.set(true);
-                                            if (document.getBoolean("permission")){
-                                                Toast.makeText(context, "User already has permission", Toast.LENGTH_SHORT).show();
+                    if (isAValidEmail) {
+                        System.out.println("Email is not empty");
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        db.collection("Permissions")
+                                .whereEqualTo("email", emailText)
+                                .get().addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        for (DocumentSnapshot document : task.getResult()) {
+                                            if (document.getString("email").equals(emailText)) {
+                                                emailIsInDatabase.set(true);
+                                                if (document.getBoolean("permission")) {
+                                                    Toast.makeText(context, "User already has permission", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText(context, "User already used his permission\n" +
+                                                            "If you want to update his permission long press the invite button", Toast.LENGTH_LONG).show();
+                                                }
+                                                return;
                                             } else {
-                                                Toast.makeText(context, "User already used his permission\n" +
-                                                        "If you want to update his permission long press the invite button", Toast.LENGTH_LONG).show();
+                                                System.out.println("Email is not in database");
+                                                emailIsInDatabase.set(false);
                                             }
-                                            return;
-                                        } else {
-                                            System.out.println("Email is not in database");
-                                            emailIsInDatabase.set(false);
+                                        }
+                                        if (!emailIsInDatabase.get()) {
+                                            db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
+                                                    .addOnCompleteListener(task2 -> {
+                                                        if (task2.isSuccessful()) {
+                                                            Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
+                                                            System.out.println("Invitation Sent");
+                                                            email.setText("");
+                                                            updateSerial();
+                                                        } else {
+                                                            Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
+                                                            System.out.println("Invitation Failed");
+                                                        }
+                                                    });
                                         }
                                     }
-                                    if (!emailIsInDatabase.get()) {
-                                        db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
-                                                .addOnCompleteListener(task2 -> {
-                                                    if (task2.isSuccessful()) {
-                                                        Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                                                        System.out.println("Invitation Sent");
-                                                        email.setText("");
-                                                        updateSerial();
-                                                    } else {
-                                                        Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
-                                                        System.out.println("Invitation Failed");
-                                                    }
-                                                });
-                                    }
-                                }
-                            });
+                                });
+                    }else {
+                        Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show();
+                    }
                 }
             } else {
                 Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
