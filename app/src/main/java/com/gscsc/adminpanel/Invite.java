@@ -11,6 +11,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Boolean.TRUE;
 
@@ -54,7 +55,7 @@ public class Invite extends AppCompatActivity {
     }
 
     public void onInviteButtonPressed(View view) {
-        if (view.isPressed()) {
+            AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
             Log.d("Invite", "Button Pressed");
             if (checkBox.isChecked()) {
                 String emailText = email.getText().toString();
@@ -69,29 +70,33 @@ public class Invite extends AppCompatActivity {
                             .get().addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
                                     for (DocumentSnapshot document : task.getResult()) {
-                                        System.out.println(document.getId());
                                         if (document.getString("email").equals(emailText)) {
+                                            emailIsInDatabase.set(true);
                                             if (document.getBoolean("permission")){
                                                 Toast.makeText(context, "User already has permission", Toast.LENGTH_SHORT).show();
                                             } else {
-                                                Toast.makeText(context, "User already used his permission\n " +
+                                                Toast.makeText(context, "User already used his permission\n" +
                                                         "If you want to update his permission long press the invite button", Toast.LENGTH_LONG).show();
                                             }
                                             return;
                                         } else {
-                                            db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
-                                                    .addOnCompleteListener(task2 -> {
-                                                        if (task2.isSuccessful()) {
-                                                            Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                                                            System.out.println("Invitation Sent");
-                                                            email.setText("");
-                                                            updateSerial();
-                                                        } else {
-                                                            Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
-                                                            System.out.println("Invitation Failed");
-                                                        }
-                                                    });
+                                            System.out.println("Email is not in database");
+                                            emailIsInDatabase.set(false);
                                         }
+                                    }
+                                    if (!emailIsInDatabase.get()) {
+                                        db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
+                                                .addOnCompleteListener(task2 -> {
+                                                    if (task2.isSuccessful()) {
+                                                        Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
+                                                        System.out.println("Invitation Sent");
+                                                        email.setText("");
+                                                        updateSerial();
+                                                    } else {
+                                                        Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
+                                                        System.out.println("Invitation Failed");
+                                                    }
+                                                });
                                     }
                                 }
                             });
@@ -99,7 +104,6 @@ public class Invite extends AppCompatActivity {
             } else {
                 Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
             }
-        }
     }
     public void onLongClick(View v) {
         System.out.println("Long Clicked");
