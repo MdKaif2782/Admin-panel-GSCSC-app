@@ -43,12 +43,13 @@
             app:layout_constraintStart_toStartOf="parent" android:id="@+id/textView"
     />
 
-   <EditText android:layout_width="match_parent"
+   <androidx.appcompat.widget.AppCompatEditText android:layout_width="match_parent"
              android:layout_height="52dp"
              android:inputType="textEmailAddress"
              android:hint="Email"
-             android:background="@drawable/outlined_box"
+             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
              android:layout_marginHorizontal="30dp"
+             android:background="@drawable/outlined_box"
              android:drawableStart="@drawable/ic_baseline_email_24"
              android:paddingStart="10dp"
              android:drawablePadding="10dp"
@@ -65,6 +66,7 @@
             android:paddingStart="10dp"
             android:inputType="textPassword"
             android:background="@drawable/outlined_box"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:imeOptions="actionNext"
             android:autofillHints="password"
             android:drawablePadding="10dp"
