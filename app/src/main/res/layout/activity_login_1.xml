@@ -16,14 +16,22 @@
             android:src="@drawable/clublogo"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:id="@+id/imageView2"/>
-    <ImageView android:layout_height="251dp"
-               android:layout_width="215dp"
-               android:layout_marginHorizontal="120dp"
-               android:src="@drawable/illus"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               android:id="@+id/imageView" app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintBottom_toTopOf="@+id/textView"/>
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintBottom_toTopOf="@+id/textView" app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/login_illustration" app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        <ImageView android:layout_height="251dp"
+                   android:layout_width="215dp"
+                   android:src="@drawable/illus"
+                   android:id="@+id/login_illus"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    </LinearLayout>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

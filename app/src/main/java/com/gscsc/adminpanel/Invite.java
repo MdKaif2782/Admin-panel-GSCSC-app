@@ -5,11 +5,9 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1.Document;
 
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class Invite extends AppCompatActivity {
     private Context context;
     private int serialNumber;
     private CheckBox checkBox;
-    private int screenWidth, screenHeight;
+    private int screenWidth;
     private ImageView illustration;
 
     @Override
@@ -32,11 +30,13 @@ public class Invite extends AppCompatActivity {
         email = findViewById(R.id.email_input);
         serial = findViewById(R.id.serial_number);
         checkBox = findViewById(R.id.checkbox);
-        illustration = findViewById(R.id.imageView);
+        illustration = findViewById(R.id.login_illustration);
         screenWidth = getResources().getDisplayMetrics().widthPixels;
-        screenHeight = getResources().getDisplayMetrics().heightPixels;
+        int screenHeight = getResources().getDisplayMetrics().heightPixels;
+        System.out.println(screenWidth);
+        System.out.println(screenHeight);
 
-        resizeImage();
+        resizeImage(screenHeight);
         updateSerial();
     }
 
@@ -96,10 +96,12 @@ public class Invite extends AppCompatActivity {
         });
 
     }
-    public void resizeImage(){
-        int newHeight = (int) (screenWidth * 0.25);
+    public void resizeImage(int height) {
+        int newHeight = (int) (height * 0.30);
         int imageWidth = illustration.getDrawable().getIntrinsicWidth();
         int newWidth = (int) (newHeight * (imageWidth / illustration.getDrawable().getIntrinsicHeight()));
+        System.out.println("New Width: "+newWidth);
+        System.out.println("New Height: "+newHeight);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
     }

@@ -22,7 +22,7 @@
                android:src="@drawable/login_illus"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               android:id="@+id/imageView" app:layout_constraintTop_toTopOf="parent"
+               android:id="@+id/login_illustration" app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintBottom_toTopOf="@+id/textView"/>
 
     <TextView

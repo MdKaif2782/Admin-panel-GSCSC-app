@@ -7,10 +7,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
-import com.bumptech.glide.Glide;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -19,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     private Intent intent;
     private ImageView progressBar;
     private TextInputLayout emailLayout, passwordLayout;
-    private int screenWidth, screenHeight;
+    private int screenWidth;
     private ImageView illustration;
 
     @Override
@@ -30,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         context = this;
         intent = new Intent(context, Option.class);;
-        screenHeight = getResources().getDisplayMetrics().heightPixels;
-        illustration = findViewById(R.id.imageView);
+        int screenHeight = getResources().getDisplayMetrics().heightPixels;
+        illustration = findViewById(R.id.login_illus);
 
 
 
@@ -41,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        resizeImage();
+        resizeImage(screenHeight);
     }
     public void login(View v){
         CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
@@ -79,10 +76,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }
-    public void resizeImage(){
-        int newHeight = (int) (screenWidth * 0.20);
-        int imageWidth = illustration.getDrawable().getIntrinsicWidth();
-        int newWidth = (int) (newHeight * (imageWidth / illustration.getDrawable().getIntrinsicHeight()));
+    public void resizeImage(int height) {
+        int newHeight = (int) (height * 0.20);
+
+        //dp to px
+        int imageWidth = (int) (215 * getResources().getDisplayMetrics().density);
+        int newWidth = (int) (newHeight * (imageWidth / (251 * getResources().getDisplayMetrics().density)));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
     }
