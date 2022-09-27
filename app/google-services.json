@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "536838455962",
-    "project_id": "painfree-membership",
-    "storage_bucket": "painfree-membership.appspot.com"
+    "project_number": "715852591651",
+    "project_id": "pain-free-membership",
+    "storage_bucket": "pain-free-membership.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:536838455962:android:37ffcdc136f2543eb25523",
+        "mobilesdk_app_id": "1:715852591651:android:f54a21a1ed60e5562ff796",
         "android_client_info": {
           "package_name": "com.gscsc.adminpanel"
         }
       },
       "oauth_client": [
         {
-          "client_id": "536838455962-gmlleb8kctalvb6646agd9a0igbjv6fb.apps.googleusercontent.com",
+          "client_id": "715852591651-fcanqbug5g66ki1herb1gk31vh1rttmb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBf8troRCzW19HgVUh8hAkJ4Pk8_fyJW7I"
+          "current_key": "AIzaSyAHGoVbcPOPBYUgvCtpP0Iw8o0LQOGbqSc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "536838455962-gmlleb8kctalvb6646agd9a0igbjv6fb.apps.googleusercontent.com",
+              "client_id": "715852591651-fcanqbug5g66ki1herb1gk31vh1rttmb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

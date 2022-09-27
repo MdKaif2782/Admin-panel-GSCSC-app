@@ -157,6 +157,7 @@ public class Invite extends AppCompatActivity {
                 });
 
             } else {
+                Log.d("Invite", "Error getting documents: ", task.getException());
                 System.out.println("Error getting documents: "+ task.getException());
             }
         });
