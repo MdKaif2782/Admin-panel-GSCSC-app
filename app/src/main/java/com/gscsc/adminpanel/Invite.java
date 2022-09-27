@@ -97,7 +97,7 @@ public class Invite extends AppCompatActivity {
 
     }
     public void resizeImage(int height) {
-        int newHeight = (int) (height * 0.30);
+        int newHeight = (int) (height * 0.37);
         int imageWidth = illustration.getDrawable().getIntrinsicWidth();
         int newWidth = (int) (newHeight * (imageWidth / illustration.getDrawable().getIntrinsicHeight()));
         System.out.println("New Width: "+newWidth);
