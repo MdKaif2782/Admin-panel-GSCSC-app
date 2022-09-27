@@ -42,7 +42,7 @@ public class Option extends AppCompatActivity {
         finish();
     }
     public void resizeImage(int height){
-        int newHeight = (int) (height * 0.32);
+        int newHeight = (int) (height * 0.28);
         int newWidth = 187*newHeight/220;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         admin_panel_image.setLayoutParams(params);
