@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
     public void resizeImage(int height) {
-        int newHeight = (int) (height * 0.20);
+        int newHeight = (int) (height * 0.32);
 
         //dp to px
         int imageWidth = (int) (215 * getResources().getDisplayMetrics().density);
