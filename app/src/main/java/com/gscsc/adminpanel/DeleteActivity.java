@@ -45,7 +45,7 @@ public class DeleteActivity extends AppCompatActivity {
     }
 
     public void resizeImage(int height){
-        int newHeight = (int) (height*0.37);
+        int newHeight = (int) (height*0.32);
         int imageHeight = delete_illustration.getDrawable().getIntrinsicHeight();
         int imageWidth = delete_illustration.getDrawable().getIntrinsicWidth();
         int newWidth = (int) (newHeight*imageWidth/imageHeight);
