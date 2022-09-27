@@ -12,7 +12,6 @@ import android.os.Bundle;
 public class Option extends AppCompatActivity {
     private Intent inviteIntent;
     private Context context;
-    private int screenHeight;
     private ImageView admin_panel_image;
 
     @Override
@@ -21,9 +20,8 @@ public class Option extends AppCompatActivity {
         setContentView(R.layout.activity_option);
         context = this;
         inviteIntent = new Intent(this, Invite.class);
-        screenHeight = getResources().getDisplayMetrics().heightPixels;
+        int screenHeight = getResources().getDisplayMetrics().heightPixels;
         admin_panel_image = findViewById(R.id.admin_panel_image);
-
         resizeImage(screenHeight);
     }
     public void switchToInvite(View view) {
@@ -36,11 +34,13 @@ public class Option extends AppCompatActivity {
         finish();
     }
     public void resizeImage(int height){
-        int newHeight = (int) (height * 0.34);
-        int imageWidth = admin_panel_image.getWidth();
-        int imageHeight = admin_panel_image.getHeight();
-        int newWidth = (int) (imageWidth * (newHeight / imageHeight));
+        int newHeight = (int) (height * 0.32);
+        System.out.println(newHeight);
+        System.out.println("\n\n\n\n\n\n\nn\n\n\\nn\\n\n\n\n\n\n\\n\n");
+        int newWidth = 187*newHeight/220;
+        System.out.println(newWidth);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         admin_panel_image.setLayoutParams(params);
+
     }
 }
