@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -30,6 +31,10 @@ public class Option extends AppCompatActivity {
     public void switchToInvite(View view) {
        context.startActivity(inviteIntent);
     }
+    public void switchToDelete(View view) {
+        Intent deleteIntent = new Intent(context, DeleteActivity.class);
+        context.startActivity(deleteIntent);
+    }
 
     @Override
     public void onBackPressed() {
@@ -41,5 +46,9 @@ public class Option extends AppCompatActivity {
         int newWidth = 187*newHeight/220;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         admin_panel_image.setLayoutParams(params);
+    }
+
+    public void notReadyYet(View view) {
+        Toast.makeText(context, "Can't be ready until Website is complete", Toast.LENGTH_SHORT).show();
     }
 }
