@@ -2,10 +2,7 @@ package com.gscsc.adminpanel;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
@@ -24,6 +21,8 @@ public class Invite extends AppCompatActivity {
     private Context context;
     private int serialNumber;
     private CheckBox checkBox;
+    private int screenWidth, screenHeight;
+    private ImageView illustration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,11 @@ public class Invite extends AppCompatActivity {
         email = findViewById(R.id.email_input);
         serial = findViewById(R.id.serial_number);
         checkBox = findViewById(R.id.checkbox);
+        illustration = findViewById(R.id.imageView);
+        screenWidth = getResources().getDisplayMetrics().widthPixels;
+        screenHeight = getResources().getDisplayMetrics().heightPixels;
+
+        resizeImage();
         updateSerial();
     }
 
@@ -91,5 +95,12 @@ public class Invite extends AppCompatActivity {
             }
         });
 
+    }
+    public void resizeImage(){
+        int newHeight = (int) (screenWidth * 0.25);
+        int imageWidth = illustration.getDrawable().getIntrinsicWidth();
+        int newWidth = (int) (newHeight * (imageWidth / illustration.getDrawable().getIntrinsicHeight()));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
+        illustration.setLayoutParams(params);
     }
 }

@@ -29,14 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         context = this;
-        intent = new Intent(context, Option.class);
-        emailLayout = findViewById(R.id.textInputLayout4);
-        passwordLayout = findViewById(R.id.textInputLayout3);
-        emailLayout.setBoxBackgroundColor(getResources().getColor(R.color.TRANSPARENT));
-        emailLayout.setBackground(null);
+        intent = new Intent(context, Option.class);;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
         illustration = findViewById(R.id.imageView);
-        passwordLayout.setBoxBackgroundColor(getResources().getColor(R.color.TRANSPARENT));
+
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -84,12 +80,10 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
     public void resizeImage(){
-        int newHeight = (int) (screenWidth * 0.25);
+        int newHeight = (int) (screenWidth * 0.20);
         int imageWidth = illustration.getDrawable().getIntrinsicWidth();
         int newWidth = (int) (newHeight * (imageWidth / illustration.getDrawable().getIntrinsicHeight()));
-        //set the new width and height
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
-
     }
 }
