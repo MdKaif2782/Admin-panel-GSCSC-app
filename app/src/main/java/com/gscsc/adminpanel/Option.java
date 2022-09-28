@@ -29,11 +29,17 @@ public class Option extends AppCompatActivity {
         resizeImage(screenHeight);
     }
     public void switchToInvite(View view) {
-       context.startActivity(inviteIntent);
+        //delay 200ms
+        invite.postDelayed(() -> {
+            context.startActivity(inviteIntent);
+        }, 320);
+
     }
     public void switchToDelete(View view) {
         Intent deleteIntent = new Intent(context, DeleteActivity.class);
-        context.startActivity(deleteIntent);
+        invite.postDelayed(() -> {
+            context.startActivity(deleteIntent);
+        }, 320);
     }
 
     @Override
