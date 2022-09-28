@@ -19,12 +19,14 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/textView" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
-        <ImageView android:layout_height="218dp"
-                   android:layout_width="234dp"
-                   android:src="@drawable/login_illus"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   android:id="@+id/login_illustration" />
+
+        <ImageView
+            android:id="@+id/login_illustration"
+            android:layout_width="284dp"
+            android:layout_height="272dp"
+            android:src="@drawable/login_illus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 

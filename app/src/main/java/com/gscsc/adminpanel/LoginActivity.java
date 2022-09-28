@@ -29,15 +29,11 @@ public class LoginActivity extends AppCompatActivity {
         intent = new Intent(context, Option.class);;
         int screenHeight = getResources().getDisplayMetrics().heightPixels;
         illustration = findViewById(R.id.login_illus);
-
-
-
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             context.startActivity(intent);
             finish();
         }
-
         resizeImage(screenHeight);
     }
     public void login(View v){
