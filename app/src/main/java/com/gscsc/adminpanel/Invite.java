@@ -114,27 +114,31 @@ public class Invite extends AppCompatActivity {
         AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>();
         emailIsInDatabase.set(false);
         Log.d("Invite", "Long Button Pressed");
-        if (checkBox.isChecked()){
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("Permissions").get().addOnCompleteListener(task -> {
-               for (DocumentSnapshot document : task.getResult()) {
-                   if (document.getString("email").equals(email.getText().toString())) {
-                       emailIsInDatabase.set(true);
-                       if (document.getBoolean("permission")){
-                           Toast.makeText(context, "User already has permission",Toast.LENGTH_SHORT).show();
-                       } else {
-                           db.collection("Permissions").document(document.getId()).update("permission", true);
-                           Toast.makeText(context, "Permission Updated", Toast.LENGTH_SHORT).show();
-                       }
-                       break;
-                   }
-               }
-               if (!emailIsInDatabase.get()) {
-                   Toast.makeText(context, "Email is not in database", Toast.LENGTH_SHORT).show();
-               }
-            });
+        if (email.getText().toString().isEmpty()){
+            Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
+            if (checkBox.isChecked()) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("Permissions").get().addOnCompleteListener(task -> {
+                    for (DocumentSnapshot document : task.getResult()) {
+                        if (document.getString("email").equals(email.getText().toString())) {
+                            emailIsInDatabase.set(true);
+                            if (document.getBoolean("permission")) {
+                                Toast.makeText(context, "User already has permission", Toast.LENGTH_SHORT).show();
+                            } else {
+                                db.collection("Permissions").document(document.getId()).update("permission", true);
+                                Toast.makeText(context, "Permission Updated", Toast.LENGTH_SHORT).show();
+                            }
+                            break;
+                        }
+                    }
+                    if (!emailIsInDatabase.get()) {
+                        Toast.makeText(context, "Email is not in database", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -172,4 +176,4 @@ public class Invite extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
     }
-}
+        }
