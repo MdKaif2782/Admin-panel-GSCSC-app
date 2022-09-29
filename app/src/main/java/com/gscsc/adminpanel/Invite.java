@@ -9,11 +9,23 @@ import android.os.Bundle;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.gscsc.adminpanel.JavaMailAPI.JavaMailAPI;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Boolean.TRUE;
+import static java.net.HttpURLConnection.HTTP_OK;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Invite extends AppCompatActivity {
     private TextView serial;
@@ -25,6 +37,7 @@ public class Invite extends AppCompatActivity {
     private ImageView illustration;
     private Button invite;
     private Boolean isLongPressed = false;
+    private String emailAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,7 @@ public class Invite extends AppCompatActivity {
 
 
 
+
     }
 
     @Override
@@ -58,6 +72,8 @@ public class Invite extends AppCompatActivity {
             Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
             Log.d("Invite", "Button Pressed");
+            emailAddress = email.getText().toString();
+            sendMail();
             if (checkBox.isChecked()) {
                 String emailText = email.getText().toString();
                 if (emailText.isEmpty()) {
@@ -176,4 +192,13 @@ public class Invite extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
     }
-        }
+    public void sendMail(){
+        String emailText = email.getText().toString();
+        String subject = "Invitation to use the app";
+        String body = "Chock me Daddy";
+
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, emailText, subject, body);
+        javaMailAPI.execute();
+
+    }
+}

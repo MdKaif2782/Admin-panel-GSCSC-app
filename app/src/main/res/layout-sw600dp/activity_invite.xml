@@ -9,8 +9,8 @@
         android:layout_weight="100"
         tools:context=".Invite">
     <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:src="@drawable/clublogo"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:id="@+id/imageView2"/>
