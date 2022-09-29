@@ -1,6 +1,7 @@
 package com.gscsc.adminpanel;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -15,17 +16,7 @@ import com.gscsc.adminpanel.JavaMailAPI.JavaMailAPI;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
-
 import static java.lang.Boolean.TRUE;
-import static java.net.HttpURLConnection.HTTP_OK;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Invite extends AppCompatActivity {
     private TextView serial;
@@ -69,11 +60,11 @@ public class Invite extends AppCompatActivity {
     }
 
     public void onInviteButtonPressed(View view) {
+            emailAddress = email.getText().toString();
             Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
             Log.d("Invite", "Button Pressed");
             emailAddress = email.getText().toString();
-            sendMail();
             if (checkBox.isChecked()) {
                 String emailText = email.getText().toString();
                 if (emailText.isEmpty()) {
@@ -110,6 +101,7 @@ public class Invite extends AppCompatActivity {
                                                             System.out.println("Invitation Sent");
                                                             email.setText("");
                                                             updateSerial();
+                                                            sendMail();
                                                         } else {
                                                             Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
                                                             System.out.println("Invitation Failed");
@@ -144,6 +136,7 @@ public class Invite extends AppCompatActivity {
                             } else {
                                 db.collection("Permissions").document(document.getId()).update("permission", true);
                                 Toast.makeText(context, "Permission Updated", Toast.LENGTH_SHORT).show();
+                                sendMail();
                             }
                             break;
                         }
@@ -193,12 +186,12 @@ public class Invite extends AppCompatActivity {
         illustration.setLayoutParams(params);
     }
     public void sendMail(){
-        String emailText = email.getText().toString();
-        String subject = "Invitation to use the app";
-        String body = "Chock me Daddy";
-
-        JavaMailAPI javaMailAPI = new JavaMailAPI(this, emailText, subject, body);
+        String emailText = emailAddress;
+        String subject = "Invitation to GSCSC";
+        String body = "Your serial number is "+serialNumber+"\nForm link : https://youtu.be/f3KzmVblyHw";
+        JavaMailAPI javaMailAPI = new JavaMailAPI(context, emailText, subject, body);
         javaMailAPI.execute();
-
+        emailAddress= "";
     }
+
 }

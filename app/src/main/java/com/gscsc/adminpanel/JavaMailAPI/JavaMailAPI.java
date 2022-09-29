@@ -2,6 +2,7 @@ package com.gscsc.adminpanel.JavaMailAPI;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.Properties;
 
@@ -19,6 +20,7 @@ public class JavaMailAPI extends AsyncTask<Void, Void, Void> {
 
     private Session session;
     private String email, subject, message;
+    private boolean emailSent = false;
 
     public JavaMailAPI(Context context, String email, String subject, String message) {
         this.context = context;
@@ -30,11 +32,11 @@ public class JavaMailAPI extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.host", "smtp-relay.sendinblue.com");
+        properties.put("mail.smtp.socketFactory.port", "587");
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.port", "587");
 
         session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -44,16 +46,28 @@ public class JavaMailAPI extends AsyncTask<Void, Void, Void> {
 
         MimeMessage mimeMessage = new MimeMessage(session);
         try {
-            mimeMessage.setFrom(new InternetAddress(Utils.EMAIL));
+            mimeMessage.setFrom(new InternetAddress(Utils.FROM));
             mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(email)));
             mimeMessage.setSubject(subject);
             mimeMessage.setText(message);
             Transport.send(mimeMessage);
+            emailSent = true;
         } catch (MessagingException e) {
+            emailSent = false;
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void unused) {
+        super.onPostExecute(unused);
+        if (emailSent) {
+            Toast.makeText(context, "Email Sent", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Email Not Sent", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 
