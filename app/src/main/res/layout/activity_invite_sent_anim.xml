@@ -9,10 +9,9 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_rocket"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="300dp"
+      android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginVertical="0dp"
         app:lottie_rawRes="@raw/rocket_launch_anim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,6 @@
         app:lottie_speed="0.7" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/invitation_sent_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
@@ -33,11 +31,13 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="italic"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottie_rocket"
-        app:layout_constraintVertical_bias="0.198" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.455" />
 
     <TextView
         android:visibility="invisible"
