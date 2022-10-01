@@ -1,6 +1,7 @@
 package com.gscsc.adminpanel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.gscsc.adminpanel.JavaMailAPI.JavaMailAPI;
 
 
@@ -60,6 +62,7 @@ public class Invite extends AppCompatActivity {
     }
 
     public void onInviteButtonPressed(View view) {
+            switchToAnimation();
             emailAddress = email.getText().toString();
             Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
@@ -102,6 +105,7 @@ public class Invite extends AppCompatActivity {
                                                             email.setText("");
                                                             updateSerial();
                                                             sendMail();
+
                                                         } else {
                                                             Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
                                                             System.out.println("Invitation Failed");
@@ -118,6 +122,8 @@ public class Invite extends AppCompatActivity {
                 Toast.makeText(context, "Please check the box", Toast.LENGTH_SHORT).show();
             }
     }
+
+
     public void onLongClick(View v) {
         AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>();
         emailIsInDatabase.set(false);
@@ -192,6 +198,11 @@ public class Invite extends AppCompatActivity {
         JavaMailAPI javaMailAPI = new JavaMailAPI(context, emailText, subject, body);
         javaMailAPI.execute();
         emailAddress= "";
+    }
+
+    public void switchToAnimation(){
+        Intent intent = new Intent(context, invite_sent_anim.class);
+        startActivity(intent);
     }
 
 }

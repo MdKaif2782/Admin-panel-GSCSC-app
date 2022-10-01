@@ -54,6 +54,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     //Java mail api
     implementation 'com.sun.mail:android-mail:1.6.5'
+    //lottie animation
+    implementation 'com.airbnb.android:lottie:4.2.0'
 
 
 }
