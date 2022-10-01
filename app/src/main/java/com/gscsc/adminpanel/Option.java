@@ -36,6 +36,7 @@ public class Option extends AppCompatActivity {
 
     }
     public void switchToDelete(View view) {
+        //Slide animation
         Intent deleteIntent = new Intent(context, DeleteActivity.class);
         invite.postDelayed(() -> {
             context.startActivity(deleteIntent);
