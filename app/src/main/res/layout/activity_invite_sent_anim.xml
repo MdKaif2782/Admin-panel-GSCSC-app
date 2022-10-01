@@ -4,20 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#76B1E1"
+    android:background="#A2CAEA"
     tools:context=".invite_sent_anim">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         android:id="@+id/lottie_rocket"
-        app:lottie_autoPlay="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="300dp"
         app:lottie_rawRes="@raw/rocket_launch_anim"
-        app:lottie_speed="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_speed="0.7" />
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/invitation_sent_text"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Invitation Sent!"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lottie_rocket"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <TextView
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Awesome!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:id="@+id/awesome_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invitation_sent_text"
+        app:layout_constraintVertical_bias="0.076" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
