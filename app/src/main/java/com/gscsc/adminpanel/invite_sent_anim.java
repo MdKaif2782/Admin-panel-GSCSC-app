@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -42,11 +44,25 @@ public class invite_sent_anim extends AppCompatActivity {
         animationView.addAnimatorListener(new android.animation.Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(android.animation.Animator animation) {
+                //wait 1000ms for thread
+                try {
+                    Thread.sleep(1000);
+                    View view = findViewById(R.id.rocket_animation);
+                    view.setAnimation(android.view.animation.AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rocket_goes_up_anim));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
 
             @Override
             public void onAnimationEnd(android.animation.Animator animation) {
+                //wait 1000ms for thread
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 textView.setVisibility(android.view.View.VISIBLE);
                 textView2.setVisibility(android.view.View.VISIBLE);
                 //wait 1.5s
