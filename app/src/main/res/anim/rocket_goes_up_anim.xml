@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the animation for the rocket going up -->
+    <objectAnimator
+        android:duration="1500"
+        android:propertyName="translationY"
+        android:valueFrom="0"
+        android:valueTo="-2000"
+        android:valueType="floatType" />
+</set>
