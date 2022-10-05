@@ -149,6 +149,7 @@
             android:text="LOGIN"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:fontFamily="@font/alatsi"
             app:layout_constraintBottom_toBottomOf="@+id/success"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
