@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD9F4"
+    android:background="#FBDFC9"
     tools:context=".invite_sent_anim">
 
     <com.airbnb.lottie.LottieAnimationView

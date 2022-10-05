@@ -3,6 +3,7 @@ package com.gscsc.adminpanel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -19,6 +20,8 @@ public class invite_sent_anim extends AppCompatActivity {
         animationView.addAnimatorListener(new android.animation.Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(android.animation.Animator animation) {
+                View view = findViewById(R.id.lottie_rocket);
+                view.setAnimation(android.view.animation.AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rocket_apha));
 
             }
 
