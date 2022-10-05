@@ -33,8 +33,8 @@ public class invite_sent_anim extends AppCompatActivity {
             public void onAnimationEnd(android.animation.Animator animation) {
                 textView.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.VISIBLE);
-                textView.animate().alpha(1).setDuration(1000);
-                textView2.animate().alpha(1).setDuration(1000);
+                textView.setAnimation(android.view.animation.AnimationUtils.loadAnimation(getApplicationContext(),R.anim.text_alpha));
+                textView2.setAnimation(android.view.animation.AnimationUtils.loadAnimation(getApplicationContext(),R.anim.text_alpha));
                 animationView.postDelayed(() -> {
                     finish();
                 }, 2000);

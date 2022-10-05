@@ -2,11 +2,14 @@ package com.gscsc.adminpanel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -19,12 +22,22 @@ public class LoginActivity extends AppCompatActivity {
     private int screenWidth;
     private ImageView illustration;
 
+    private View success;
+    private View failure;
+    private TextView login_text;
+    private LottieAnimationView loading_anim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_1);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        success = findViewById(R.id.success);
+        failure = findViewById(R.id.failure);
+        login_text = findViewById(R.id.login_text);
+        loading_anim = findViewById(R.id.loading_anim);
+
         context = this;
         intent = new Intent(context, Option.class);;
         int screenHeight = getResources().getDisplayMetrics().heightPixels;
@@ -80,5 +93,31 @@ public class LoginActivity extends AppCompatActivity {
         int newWidth = (int) (newHeight * (imageWidth / (251 * getResources().getDisplayMetrics().density)));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         illustration.setLayoutParams(params);
+    }
+
+
+    public void loginAnimation(View view) {
+        //wait for 3 second
+        Log.d("LoginActivity", "loginAnimation: Clicked");
+        login_text.setVisibility(View.GONE);
+        loading_anim.setVisibility(View.VISIBLE);
+        loading_anim.setAnimation(R.raw.loading);
+        loading_anim.playAnimation();
+        //wait for 3 second
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+
+                        success.setVisibility(View.VISIBLE);
+                        loading_anim.cancelAnimation();
+                        loading_anim.setAnimation(R.raw.success);
+                        loading_anim.playAnimation();
+                    }
+                },
+                3000);
+
+
+
+
     }
 }
