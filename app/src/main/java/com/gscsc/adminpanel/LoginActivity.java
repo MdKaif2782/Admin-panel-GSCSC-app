@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                             super.onAnimationEnd(animation);
                             //wait for 1 second
                             try {
-                                Thread.sleep(1000);
+                                Thread.sleep(500);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
