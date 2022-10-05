@@ -10,12 +10,16 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class invite_sent_anim extends AppCompatActivity {
     private LottieAnimationView animationView;
+    private TextView textView;
+    private TextView textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_sent_anim);
         animationView = findViewById(R.id.lottie_rocket);
+        textView = findViewById(R.id.invitation_sent_text);
+        textView2 = findViewById(R.id.awesome_text);
         //close after animation is done
         animationView.addAnimatorListener(new android.animation.Animator.AnimatorListener() {
             @Override
@@ -27,7 +31,14 @@ public class invite_sent_anim extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(android.animation.Animator animation) {
-                finish();
+                textView.setVisibility(View.VISIBLE);
+                textView2.setVisibility(View.VISIBLE);
+                textView.animate().alpha(1).setDuration(1000);
+                textView2.animate().alpha(1).setDuration(1000);
+                animationView.postDelayed(() -> {
+                    finish();
+                }, 2000);
+
             }
 
             @Override

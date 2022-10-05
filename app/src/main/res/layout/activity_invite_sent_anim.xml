@@ -8,9 +8,10 @@
     tools:context=".invite_sent_anim">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/lottie_rocket"
+        android:layout_marginHorizontal="20dp"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/paper_rocket"
         app:lottie_speed="0.7"
@@ -18,6 +19,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/invitation_sent_text"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Invitation Sent!"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="italic"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottie_rocket"
+        app:layout_constraintVertical_bias="0.308" />
+
+    <TextView
+        android:id="@+id/awesome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Awesome!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/invitation_sent_text"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/invitation_sent_text"
+        app:layout_constraintTop_toBottomOf="@+id/invitation_sent_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
