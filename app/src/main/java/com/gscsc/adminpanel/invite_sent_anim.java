@@ -20,6 +20,7 @@ public class invite_sent_anim extends AppCompatActivity {
         animationView = findViewById(R.id.lottie_rocket);
         textView = findViewById(R.id.invitation_sent_text);
         textView2 = findViewById(R.id.awesome_text);
+
         //close after animation is done
         animationView.addAnimatorListener(new android.animation.Animator.AnimatorListener() {
             @Override

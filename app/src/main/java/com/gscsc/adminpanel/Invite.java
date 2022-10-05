@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,6 +34,8 @@ public class Invite extends AppCompatActivity {
     private Boolean isLongPressed = false;
     private String emailAddress;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +50,8 @@ public class Invite extends AppCompatActivity {
         findViewById(R.id.submit_invite).setOnLongClickListener(v->{onLongClick(v); return true;});
         System.out.println(screenWidth);
         System.out.println(screenHeight);
-
         resizeImage(screenHeight);
         updateSerial();
-
-
-
-
     }
 
     @Override
@@ -62,7 +61,6 @@ public class Invite extends AppCompatActivity {
     }
 
     public void onInviteButtonPressed(View view) {
-            switchToAnimation();
             emailAddress = email.getText().toString();
             Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
@@ -105,6 +103,7 @@ public class Invite extends AppCompatActivity {
                                                             email.setText("");
                                                             updateSerial();
                                                             sendMail();
+                                                            switchToAnimation();
 
                                                         } else {
                                                             Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
@@ -143,6 +142,7 @@ public class Invite extends AppCompatActivity {
                                 db.collection("Permissions").document(document.getId()).update("permission", true);
                                 Toast.makeText(context, "Permission Updated", Toast.LENGTH_SHORT).show();
                                 sendMail();
+                                switchToAnimation();
                             }
                             break;
                         }
