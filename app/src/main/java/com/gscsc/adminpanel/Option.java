@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Option extends AppCompatActivity {
     private Intent inviteIntent;
     private Context context;
@@ -57,5 +59,12 @@ public class Option extends AppCompatActivity {
 
     public void notReadyYet(View view) {
         Toast.makeText(context, "Can't be ready until Website is complete", Toast.LENGTH_SHORT).show();
+    }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+        finish();
     }
 }
