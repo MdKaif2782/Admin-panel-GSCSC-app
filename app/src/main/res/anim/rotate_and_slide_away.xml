@@ -13,7 +13,7 @@
                        android:toXDelta="400%"
                        android:fromYDelta="0"
                        android:toYDelta="0"
-                       android:duration="6000"/>
+                       android:duration="5000"/>
                </set>
            </rotate>
 </set>
