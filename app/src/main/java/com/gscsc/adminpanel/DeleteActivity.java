@@ -1,6 +1,7 @@
 package com.gscsc.adminpanel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class DeleteActivity extends AppCompatActivity {
     }
 
     public void onDeleteButtonPressed(View v){
+        switchToAmogus();
         if (checkBox.isChecked()){
             db.collection("Members")
                     .document(clubID.getText().toString())
@@ -51,5 +53,10 @@ public class DeleteActivity extends AppCompatActivity {
         int newWidth = (int) (newHeight*imageWidth/imageHeight);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(newWidth, newHeight);
         delete_illustration.setLayoutParams(params);
+    }
+
+    public void switchToAmogus(){
+        Intent intent = new Intent(context, amongus.class);
+        startActivity(intent);
     }
 }
