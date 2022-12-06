@@ -2,13 +2,18 @@ package com.gscsc.adminpanel.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.RoundedCorner;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.gscsc.adminpanel.Member;
 import com.gscsc.adminpanel.R;
 
@@ -34,6 +39,9 @@ public class MemberCardAdapter extends RecyclerView.Adapter<MemberCardAdapter.vi
         Member member = memberList.get(position);
         holder.name.setText(member.getName());
         holder.department.setText(member.getDepartment());
+        Glide.with(context).load(R.drawable.aqua).circleCrop().into(holder.userImage);
+        // set image radius to 10 dp and set to userBackground
+
     }
 
     @Override
@@ -43,10 +51,14 @@ public class MemberCardAdapter extends RecyclerView.Adapter<MemberCardAdapter.vi
 
     public class viewholder extends RecyclerView.ViewHolder {
         TextView name,department;
+        ImageView userImage, userBackground;
         public viewholder(@NonNull View parent) {
             super(parent);
             name = parent.findViewById(R.id.user_profile_name);
             department = parent.findViewById(R.id.user_profile_department);
+            userImage = parent.findViewById(R.id.user_profile_image_circle);
+            userBackground = parent.findViewById(R.id.user_profile_image);
+
         }
     }
 
