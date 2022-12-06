@@ -25,7 +25,7 @@ public class MemberCardAdapter extends RecyclerView.Adapter<MemberCardAdapter.vi
     @NonNull
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_recycler_of_user,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.grid_recycler_of_user,parent,false);
         return new viewholder(view);
     }
 
@@ -51,5 +51,6 @@ public class MemberCardAdapter extends RecyclerView.Adapter<MemberCardAdapter.vi
     }
 
 }
+
 
 

@@ -31,9 +31,10 @@ public class user_cards extends AppCompatActivity {
             Member member = new Member("Md Kaif","department of IT");
             memberList.add(member);
         }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(gridLayoutManager);
+
         MemberCardAdapter memberCardAdapter = new MemberCardAdapter(this,memberList);
         recyclerView.setAdapter(memberCardAdapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+
     }
 }
