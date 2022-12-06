@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="176dp"
+            android:layout_height="222dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_margin="10dp"
+            app:cardPreventCornerOverlap="true"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            >
+            <ImageView
+                android:id="@+id/user_profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/aqua"
+                android:foreground="#85000000"
+                android:scaleType="centerCrop"
+                />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/user_profile_image_circle"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                app:srcCompat="@drawable/aqua"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="25dp"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                />
+
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Aqua Sama"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/user_profile_department"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="75dp"
+                android:text="Useless Goddess, but still cute"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </androidx.cardview.widget.CardView>
+
+</LinearLayout>

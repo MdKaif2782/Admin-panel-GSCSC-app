@@ -97,7 +97,7 @@
           android:layout_marginTop="15dp"
           android:layout_height="61dp"
           android:text="User List"
-          android:onClick="notReadyYet"
+          android:onClick="switchToUserCards"
           android:textAllCaps="false"
           android:textStyle="bold"
           android:background="@drawable/gradient_rounded_corners"

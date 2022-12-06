@@ -67,4 +67,8 @@ public class Option extends AppCompatActivity {
         context.startActivity(intent);
         finish();
     }
+    public void switchToUserCards(View view) {
+        Intent intent = new Intent(context, user_cards.class);
+        context.startActivity(intent);
+    }
 }

@@ -86,18 +86,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public void login(View v){
-        Log.d("LoginActivity", "loginAnimation: Clicked");
-        login_text.setVisibility(View.GONE);
-        loading_anim.setVisibility(View.VISIBLE);
-        loading_anim.setAnimation(R.raw.loading);
-        loading_anim.setRepeatCount(0);
-        loading_anim.playAnimation();
+
         String emailText = email.getText().toString();
         String passwordText = password.getText().toString();
         if (emailText.isEmpty() || passwordText.isEmpty()) {
             Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show();
         }
         else {
+            Log.d("LoginActivity", "loginAnimation: Clicked");
+            login_text.setVisibility(View.GONE);
+            loading_anim.setVisibility(View.VISIBLE);
+            loading_anim.setAnimation(R.raw.loading);
+            loading_anim.setRepeatCount(0);
+            loading_anim.playAnimation();
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signInWithEmailAndPassword(emailText,passwordText).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {

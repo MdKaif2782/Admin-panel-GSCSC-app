@@ -33,6 +33,8 @@ public class Invite extends AppCompatActivity {
     private Button invite;
     private Boolean isLongPressed = false;
     private String emailAddress;
+    private LottieAnimationView loading_anim;
+
 
 
 
@@ -44,6 +46,7 @@ public class Invite extends AppCompatActivity {
         email = findViewById(R.id.email_input);
         serial = findViewById(R.id.serial_number);
         checkBox = findViewById(R.id.checkbox);
+        loading_anim = findViewById(R.id.loading_anim);
         illustration = findViewById(R.id.login_illustration);
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         int screenHeight = getResources().getDisplayMetrics().heightPixels;
@@ -73,6 +76,10 @@ public class Invite extends AppCompatActivity {
                     Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
                 } else {
                     if (isAValidEmail) {
+                        view.setVisibility(View.INVISIBLE);
+                        loading_anim.setVisibility(View.VISIBLE);
+                        loading_anim.playAnimation();
+
                         System.out.println("Email is not empty");
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("Permissions")
@@ -83,8 +90,14 @@ public class Invite extends AppCompatActivity {
                                             if (document.getString("email").equals(emailText)) {
                                                 emailIsInDatabase.set(true);
                                                 if (document.getBoolean("permission")) {
+                                                    view.setVisibility(View.VISIBLE);
+                                                    loading_anim.setVisibility(View.INVISIBLE);
+                                                    loading_anim.pauseAnimation();
                                                     Toast.makeText(context, "User already has permission", Toast.LENGTH_SHORT).show();
                                                 } else {
+                                                    view.setVisibility(View.VISIBLE);
+                                                    loading_anim.setVisibility(View.INVISIBLE);
+                                                    loading_anim.pauseAnimation();
                                                     Toast.makeText(context, "User already used his permission\n" +
                                                             "If you want to update his permission long press the invite button", Toast.LENGTH_LONG).show();
                                                 }
@@ -101,11 +114,17 @@ public class Invite extends AppCompatActivity {
                                                             Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
                                                             System.out.println("Invitation Sent");
                                                             email.setText("");
+                                                            view.setVisibility(View.VISIBLE);
+                                                            loading_anim.setVisibility(View.INVISIBLE);
+                                                            loading_anim.pauseAnimation();
                                                             updateSerial();
                                                             sendMail();
                                                             switchToAnimation();
 
                                                         } else {
+                                                            view.setVisibility(View.VISIBLE);
+                                                            loading_anim.setVisibility(View.INVISIBLE);
+                                                            loading_anim.pauseAnimation();
                                                             Toast.makeText(context, "Invitation Failed", Toast.LENGTH_SHORT).show();
                                                             System.out.println("Invitation Failed");
                                                         }
