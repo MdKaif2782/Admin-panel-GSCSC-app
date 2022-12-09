@@ -20,13 +20,18 @@
         <entry key="..\:/Proggrams/AdminPanel/app/src/main/res/layout/activity_invite.xml" value="0.25" />
         <entry key="..\:/Proggrams/AdminPanel/app/src/main/res/layout/activity_login_1.xml" value="0.15604959384352288" />
         <entry key="..\:/Proggrams/AdminPanel/app/src/main/res/layout/activity_option.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Admin-panel-GSCSC-app/app/src/main/res/layout-sw600dp/activity_delete.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Admin-panel-GSCSC-app/app/src/main/res/layout-sw600dp/activity_login_1.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Admin-panel-GSCSC-app/app/src/main/res/layout/activity_login_1.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Admin-panel-GSCSC-app/app/src/main/res/layout/activity_user_cards.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Admin-panel-GSCSC-app/app/src/main/res/layout/grid_recycler_of_user.xml" value="0.75" />
       </map>
     </option>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
