@@ -19,6 +19,7 @@ import com.gscsc.adminpanel.JavaMailAPI.JavaMailAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import static java.lang.Boolean.TRUE;
 
@@ -34,6 +35,7 @@ public class Invite extends AppCompatActivity {
     private Boolean isLongPressed = false;
     private String emailAddress;
     private LottieAnimationView loading_anim;
+
 
 
 
@@ -108,7 +110,7 @@ public class Invite extends AppCompatActivity {
                                             }
                                         }
                                         if (!emailIsInDatabase.get()) {
-                                            db.collection("Permissions").document(String.valueOf(serialNumber)).set(new Permission(emailText, TRUE))
+                                            db.collection("Permissions").document(serial.getText().toString()).set(new Permission(emailText, TRUE))
                                                     .addOnCompleteListener(task2 -> {
                                                         if (task2.isSuccessful()) {
                                                             Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
@@ -117,8 +119,8 @@ public class Invite extends AppCompatActivity {
                                                             view.setVisibility(View.VISIBLE);
                                                             loading_anim.setVisibility(View.INVISIBLE);
                                                             loading_anim.pauseAnimation();
-                                                            updateSerial();
                                                             sendMail();
+                                                            updateSerial();
                                                             switchToAnimation();
 
                                                         } else {
@@ -160,6 +162,7 @@ public class Invite extends AppCompatActivity {
                             } else {
                                 db.collection("Permissions").document(document.getId()).update("permission", true);
                                 Toast.makeText(context, "Permission Updated", Toast.LENGTH_SHORT).show();
+                                serial.setText(document.getId());
                                 sendMail();
                                 switchToAnimation();
                             }
@@ -178,27 +181,13 @@ public class Invite extends AppCompatActivity {
 
     public void updateSerial() {
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference permissions = db.collection("Permissions");
-        ArrayList<String> serial = new ArrayList<>();
-        permissions.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                for (DocumentSnapshot document : task.getResult()) {
-                    serial.add(document.getId());
-                }
-                System.out.println("ID IS "+ serial.get(serial.size()-1));
-                serialNumber = Integer.parseInt(serial.get(serial.size()-1));
-                serialNumber++;
-                this.serial.setText("Serial No: "+serialNumber);
-                runOnUiThread(() -> {
-                    this.serial.setVisibility(View.VISIBLE);
-                });
+       // generate random text hash
+        String randomText = UUID.randomUUID().toString();
+        String suitableForUrl = randomText.replaceAll("-", "");
+        //make it 10 characters long
 
-            } else {
-                Log.d("Invite", "Error getting documents: ", task.getException());
-                System.out.println("Error getting documents: "+ task.getException());
-            }
-        });
+        serial.setText(suitableForUrl);
+        System.out.println(randomText);
 
     }
     public void resizeImage(int height) {
@@ -213,7 +202,7 @@ public class Invite extends AppCompatActivity {
     public void sendMail(){
         String emailText = emailAddress;
         String subject = "Invitation to GSCSC";
-        String body = "Your serial number is "+serialNumber+"\nForm link : https://youtu.be/f3KzmVblyHw";
+        String body = "Form Link: https://gscsc.enconiya.agency/"+serial.getText().toString();
         JavaMailAPI javaMailAPI = new JavaMailAPI(context, emailText, subject, body);
         javaMailAPI.execute();
         emailAddress= "";

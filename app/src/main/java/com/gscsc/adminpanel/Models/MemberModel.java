@@ -1,9 +1,12 @@
 package com.gscsc.adminpanel.Models;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+
 public class MemberModel {
     String fname;
    String lname;
-   String fullNam;
+   String fullName;
    String image;
    String fatherName;
    String fatherNumber;
@@ -19,11 +22,47 @@ public class MemberModel {
    String blood;
    String previous;
    String clubID;
+   Bitmap bitmap;
+   Bitmap bitmapCircular;
+   Drawable drawableRadial;
+    Drawable drawableCircular;
 
-    public MemberModel(String fname, String lname, String fullNam, String image, String fatherName, String fatherNumber, String fathherOcc, String motherName, String motherrNumber, String motherOcc, String email, String phone, String present, String permanent, String fblink, String blood, String previous, String clubID) {
+    public Drawable getDrawableRadial() {
+        return drawableRadial;
+    }
+
+    public void setDrawableRadial(Drawable drawableRadial) {
+        this.drawableRadial = drawableRadial;
+    }
+
+    public Drawable getDrawableCircular() {
+        return drawableCircular;
+    }
+
+    public void setDrawableCircular(Drawable drawableCircular) {
+        this.drawableCircular = drawableCircular;
+    }
+
+    public Bitmap getBitmapCircular() {
+        return bitmapCircular;
+    }
+
+    public void setBitmapCircular(Bitmap bitmapCircular) {
+        this.bitmapCircular = bitmapCircular;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    public MemberModel(String fname, String lname, String fullName, String image, String fatherName, String fatherNumber, String fathherOcc, String motherName, String motherrNumber, String motherOcc, String email, String phone, String present, String permanent, String fblink, String blood, String previous, String clubID) {
         this.fname = fname;
         this.lname = lname;
-        this.fullNam = fullNam;
+        this.fullName = fullName;
         this.image = image;
         this.fatherName = fatherName;
         this.fatherNumber = fatherNumber;
@@ -39,6 +78,7 @@ public class MemberModel {
         this.blood = blood;
         this.previous = previous;
         this.clubID = clubID;
+
     }
 
     public MemberModel() {
@@ -60,12 +100,12 @@ public class MemberModel {
         this.lname = lname;
     }
 
-    public String getFullNam() {
-        return fullNam;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullNam(String fullNam) {
-        this.fullNam = fullNam;
+    public void setFullName(String fullNam) {
+        this.fullName = fullNam;
     }
 
     public String getImage() {

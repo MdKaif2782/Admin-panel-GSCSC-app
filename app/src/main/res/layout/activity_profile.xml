@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:id="@+id/back_button"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Profile"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/user_remove_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_baseline_delete_forever_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/user_profile_image_profile_activity"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="-80dp"
+        android:src="@drawable/aqua"
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corners"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="20239884849"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_profile_image_profile_activity" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginTop="265dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#F6F6F6"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="start"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Personal Informations"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/user_first_name_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="First Name: John"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_last_name_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Last Name: Doe"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_blood_group_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Blood Group: A+"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#F6F6F6"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="start"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Parents Informations"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/user_father_name_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Father's Name: John Dalton"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_father_cell_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Cell: 0300-1234567"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_father_occupation_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Occupation: Business"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_mother_name_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Mother's Name: John Carroll"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_mother_cell_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Cell: 0300-1234888"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_mother_occupation_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Occupation: Housewife"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#F6F6F6"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="start"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Contact Informations"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/user_email_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Email: johndoe@gmail.com"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_cell_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Cell: 0300-1234567"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_present_adr_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Present Address: 123, Street 1, City 1, Country 1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_permanent_adr_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Present Address: 123, Street 1, City 1, Country 1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_fb_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Facebook: https://www.facebook.com/johndoe"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#F6F6F6"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="start"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Other Informations"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/user_previous_exp_activity_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:text="Experience: Served as a volunteer in XYZ Organization"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

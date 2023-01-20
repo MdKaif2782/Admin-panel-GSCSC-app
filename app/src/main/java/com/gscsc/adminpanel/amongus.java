@@ -17,6 +17,8 @@ public class amongus extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.amongus);
         imageView.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_and_slide_away));
         TextView textView = findViewById(R.id.eject_message);
+        String name = getIntent().getStringExtra("name");
+        textView.setText(name+" has been ejected from the club");
         textView.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.text_alpha));
         // finish the activity after 5 seconds
         new android.os.Handler().postDelayed(

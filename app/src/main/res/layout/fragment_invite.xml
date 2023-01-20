@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.InviteFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+     <ImageView
+         android:layout_width="45dp"
+         android:layout_height="45dp"
+         android:src="@drawable/clublogo"
+         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginTop="16dp" android:layout_marginEnd="16dp" android:id="@+id/imageView2"/>
+
+     <LinearLayout
+         android:id="@+id/linearLayout4"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintBottom_toTopOf="@+id/textView"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent">
+
+         <ImageView
+             android:id="@+id/login_illustration"
+             android:layout_width="284dp"
+             android:layout_height="272dp"
+             android:src="@drawable/login_illus"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent" />
+
+     </LinearLayout>
+
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="INVITE USER"
+         android:textSize="24sp"
+         android:textColor="#4C4B4B"
+         android:fontFamily="sans-serif-condensed-light"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         android:layout_marginBottom="24dp"
+         android:id="@+id/textView"
+         app:layout_constraintBottom_toTopOf="@+id/serial_number" app:layout_constraintHorizontal_bias="0.498"/>
+
+     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+         android:text="SERIAL NUMBER = XXXX"
+         android:textSize="18sp"
+         android:textColor="#4C4B4B"
+         android:fontFamily="sans-serif-condensed-light"
+         app:layout_constraintBottom_toTopOf="@+id/email_input" app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent" android:id="@+id/serial_number"
+         android:layout_marginBottom="24dp"/>
+
+     <EditText
+         android:id="@+id/email_input"
+         android:layout_width="match_parent"
+         android:layout_height="52dp"
+         android:inputType="textEmailAddress"
+         android:background="@drawable/outlined_box"
+         android:importantForAutofill="yes"
+         android:drawableLeft="@drawable/ic_baseline_email_24"
+         style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox.Dense"
+         android:drawablePadding="10dp"
+         android:textScaleX="0.9"
+         android:focusable="true"
+         android:focusableInTouchMode="true"
+         android:hint="Email"
+         android:paddingLeft="16dp"
+         android:layout_marginHorizontal="30dp"
+         app:layout_constraintTop_toTopOf="parent"
+         android:layout_marginBottom="9dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintVertical_bias="0.624"/>
+     <androidx.appcompat.widget.AppCompatButton
+         android:layout_width="182dp"
+         android:layout_height="52dp"
+         android:background="@drawable/rounded_corners"
+         android:text="INVITE"
+         android:textStyle="bold"
+         android:textColor="#C8C5C5"
+         android:onClick="onInviteButtonPressed"
+         app:layout_constraintTop_toBottomOf="@+id/email_input"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         android:id="@+id/submit_invite"/>
+
+     <com.airbnb.lottie.LottieAnimationView
+         android:id="@+id/loading_anim"
+         android:layout_width="100dp"
+         android:layout_height="100dp"
+         android:scaleX="1"
+         app:lottie_rawRes="@raw/load_anim_vio"
+         android:scaleY="1"
+         android:visibility="gone"
+         app:layout_constraintBottom_toBottomOf="@+id/submit_invite"
+         app:layout_constraintEnd_toEndOf="@+id/submit_invite"
+         app:layout_constraintStart_toStartOf="@+id/submit_invite"
+         app:layout_constraintTop_toTopOf="@+id/submit_invite"
+         app:lottie_autoPlay="false"
+         app:lottie_repeatCount="1000"
+         app:lottie_repeatMode="restart" />
+
+
+
+
+     <androidx.appcompat.widget.AppCompatCheckBox
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="I'm sure about to invite this user"
+         android:id="@+id/checkbox"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/email_input"/>
+
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="370dp"
+         android:layout_height="450dp"
+         android:id="@+id/invite_loading_layout"
+         android:visibility="gone"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         android:background="@drawable/rounded_white"
+         android:outlineAmbientShadowColor="@color/black"
+         android:outlineSpotShadowColor="@color/black"
+         app:layout_constraintTop_toTopOf="parent" >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="36dp"
+             android:id="@+id/fetching_mail"
+             android:fontFamily="@font/alatsi"
+             android:text="Fetching mails from Firestore"
+             android:textSize="15sp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/invite_loading_animation" />
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:fontFamily="@font/alatsi"
+             android:id="@+id/already_invited"
+             android:text="Checking if the user is already registered"
+             android:textSize="15sp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/fetching_mail" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:fontFamily="@font/alatsi"
+             android:id="@+id/updating_permission"
+             android:text="Updating user's permission"
+             android:textSize="15sp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/already_invited" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:fontFamily="@font/alatsi"
+             android:id="@+id/sending_mail"
+             android:text="Sending mail to the user"
+             android:textSize="15sp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/updating_permission" />
+
+
+         <TextView
+             android:id="@+id/all_done"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:fontFamily="@font/alatsi"
+             android:text="All Done!"
+             android:textSize="28sp"
+             android:layout_marginBottom="30dp"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"/>
+
+         <com.airbnb.lottie.LottieAnimationView
+             android:layout_width="300dp"
+             android:layout_height="60dp"
+             android:layout_marginHorizontal="20dp"
+             android:layout_marginTop="40dp"
+             android:id="@+id/invite_loading_animation"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="@+id/invite_loading_layout" />
+
+         <com.google.android.material.progressindicator.CircularProgressIndicator
+             android:id="@+id/progress_indicator_1"
+             android:layout_width="15dp"
+             android:layout_height="15dp"
+             android:layout_marginRight="10dp"
+             app:layout_constraintBottom_toBottomOf="@+id/fetching_mail"
+             app:layout_constraintEnd_toStartOf="@+id/fetching_mail"
+             app:layout_constraintTop_toTopOf="@+id/fetching_mail"/>
+
+         <com.google.android.material.progressindicator.CircularProgressIndicator
+             android:id="@+id/progress_indicator_2"
+             android:layout_width="15dp"
+             android:layout_height="15dp"
+             app:layout_constraintBottom_toBottomOf="@+id/already_invited"
+             app:layout_constraintEnd_toStartOf="@+id/already_invited"
+             app:layout_constraintTop_toTopOf="@+id/already_invited" />
+         <com.google.android.material.progressindicator.CircularProgressIndicator
+             android:id="@+id/progress_indicator_3"
+             android:layout_width="15dp"
+             android:layout_height="15dp"
+             app:layout_constraintBottom_toBottomOf="@+id/updating_permission"
+             app:layout_constraintEnd_toStartOf="@+id/updating_permission"
+             app:layout_constraintTop_toTopOf="@+id/updating_permission" />
+         <com.google.android.material.progressindicator.CircularProgressIndicator
+             android:id="@+id/progress_indicator_4"
+             android:layout_width="15dp"
+             android:layout_height="15dp"
+             app:layout_constraintBottom_toBottomOf="@+id/sending_mail"
+             app:layout_constraintEnd_toStartOf="@+id/sending_mail"
+             app:layout_constraintTop_toTopOf="@+id/sending_mail" />
+
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

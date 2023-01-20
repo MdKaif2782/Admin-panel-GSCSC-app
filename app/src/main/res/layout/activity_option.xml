@@ -48,7 +48,7 @@
       android:fontFamily="sans-serif-light"
       android:onClick="switchToInvite"
       android:paddingHorizontal="60dp"
-      android:text="Invite User "
+      android:text="Send Invitation "
       android:textAllCaps="false"
       android:textColor="#FFFFFF"
       android:textSize="15sp"
@@ -57,29 +57,14 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.531" />
+      app:layout_constraintVertical_bias="0.6" />
+
 
   <androidx.appcompat.widget.AppCompatButton
-          android:layout_marginTop="15dp"
-          android:layout_width="match_parent"
-          android:layout_height="61dp"
-          android:text="Update User"
-          android:textAllCaps="false"
-          android:onClick="notReadyYet"
-          android:textStyle="bold"
-          android:background="@drawable/gradient_rounded_corners"
-          android:drawableStart="@drawable/ic_baseline_update_24"
-          android:layout_marginHorizontal="60dp"
-          android:textSize="15sp"
-          android:paddingHorizontal="60dp"
-          android:fontFamily="sans-serif-light"
-          android:textColor="#E4FFFFFF"
-          android:id="@+id/update" app:layout_constraintTop_toBottomOf="@+id/invite"/>
-  <androidx.appcompat.widget.AppCompatButton
           android:layout_width="match_parent"
           android:layout_marginTop="15dp"
           android:layout_height="61dp"
-          android:text="Delete User"
+          android:text="Remove Member"
           android:onClick="switchToDelete"
           android:textAllCaps="false"
           android:textStyle="bold"
@@ -90,13 +75,13 @@
           android:paddingHorizontal="60dp"
           android:fontFamily="sans-serif-light"
           android:textColor="#E4FFFFFF"
-          android:id="@+id/delete" app:layout_constraintTop_toBottomOf="@+id/update"
+          android:id="@+id/delete" app:layout_constraintTop_toBottomOf="@id/invite"
           app:layout_constraintEnd_toEndOf="parent"/>
   <androidx.appcompat.widget.AppCompatButton
           android:layout_width="match_parent"
           android:layout_marginTop="15dp"
           android:layout_height="61dp"
-          android:text="User List"
+          android:text="Member List"
           android:onClick="switchToUserCards"
           android:textAllCaps="false"
           android:textStyle="bold"
@@ -111,13 +96,15 @@
           app:layout_constraintEnd_toEndOf="parent"/>
 
   <ImageView
-      android:layout_width="80dp"
-      android:layout_height="80dp"
-      android:layout_marginStart="4dp"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_marginEnd="15dp"
+      android:layout_marginBottom="15dp"
       android:background="@drawable/ripple"
       android:onClick="logout"
-      android:src="@drawable/logout_image"
+      android:src="@drawable/ic_baseline_logout_24"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/user_list" />
+      app:layout_constraintEnd_toEndOf="parent"
+      app:tint="#11427A" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

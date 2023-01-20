@@ -68,6 +68,8 @@
             style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox.Dense"
             android:drawablePadding="10dp"
             android:textScaleX="0.9"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="Email"
             android:paddingLeft="16dp"
             android:layout_marginHorizontal="30dp"
