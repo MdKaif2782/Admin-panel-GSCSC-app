@@ -202,7 +202,7 @@ public class Invite extends AppCompatActivity {
     public void sendMail(){
         String emailText = emailAddress;
         String subject = "Invitation to GSCSC";
-        String body = "Form Link: https://gscsc.enconiya.agency/"+serial.getText().toString();
+        String body = "Form Link: https://pain-free-membership.web.app/"+serial.getText().toString();
         JavaMailAPI javaMailAPI = new JavaMailAPI(context, emailText, subject, body);
         javaMailAPI.execute();
         emailAddress= "";
