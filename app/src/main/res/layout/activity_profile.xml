@@ -165,6 +165,7 @@
                 android:background="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:paddingVertical="10dp"
+                android:onClick="onTextClicked"
                 android:paddingStart="20dp"
                 android:text="Cell: 0300-1234567"
                 android:textSize="15sp" />
@@ -197,6 +198,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:fontFamily="@font/poppins_medium"
+                android:onClick="onTextClicked"
                 android:paddingVertical="10dp"
                 android:paddingStart="20dp"
                 android:text="Cell: 0300-1234888"
@@ -234,6 +236,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:paddingVertical="10dp"
                 android:paddingStart="20dp"
+                android:onClick="onTextClicked"
                 android:text="Email: johndoe@gmail.com"
                 android:textSize="15sp" />
 
@@ -245,6 +248,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:paddingVertical="10dp"
                 android:paddingStart="20dp"
+                android:onClick="onTextClicked"
                 android:text="Cell: 0300-1234567"
                 android:textSize="15sp" />
 
@@ -279,6 +283,7 @@
                 android:paddingVertical="10dp"
                 android:paddingStart="20dp"
                 android:text="Facebook: https://www.facebook.com/johndoe"
+                android:onClick="onTextClicked"
                 android:textSize="15sp" />
 
             <TextView

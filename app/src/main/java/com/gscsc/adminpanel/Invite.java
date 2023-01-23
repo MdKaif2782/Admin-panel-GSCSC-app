@@ -2,7 +2,9 @@ package com.gscsc.adminpanel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -68,6 +70,14 @@ public class Invite extends AppCompatActivity {
     public void onInviteButtonPressed(View view) {
             emailAddress = email.getText().toString();
             Boolean isAValidEmail = email.getText().toString().matches("^[A-Za-z0-9+_.-]+@(.+)$");
+            // create a boolean if its a valid phone number of 11 digits
+            Boolean isAValidPhoneNumber = email.getText().toString().matches("^[0-9]{11}$");
+
+            Boolean eitherEmailOrPhone = isAValidEmail || isAValidPhoneNumber;
+        Log.d("invite", "onInviteButtonPressed: isAValidEmail: " + isAValidEmail);
+        Log.d("invite", "onInviteButtonPressed: isAValidEmail: " + isAValidPhoneNumber);
+
+
             AtomicReference<Boolean> emailIsInDatabase = new AtomicReference<>(false);
             Log.d("Invite", "Button Pressed");
             emailAddress = email.getText().toString();
@@ -77,11 +87,11 @@ public class Invite extends AppCompatActivity {
                     System.out.println("Email is empty");
                     Toast.makeText(context, "Email is empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (isAValidEmail) {
+                    if (isAValidEmail || isAValidPhoneNumber) {
                         view.setVisibility(View.INVISIBLE);
                         loading_anim.setVisibility(View.VISIBLE);
                         loading_anim.playAnimation();
-
+                        Log.d("invite", "onInviteButtonPressed: "+emailAddress);
                         System.out.println("Email is not empty");
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection("Permissions")
@@ -115,11 +125,18 @@ public class Invite extends AppCompatActivity {
                                                         if (task2.isSuccessful()) {
                                                             Toast.makeText(context, "Invitation Sent", Toast.LENGTH_SHORT).show();
                                                             System.out.println("Invitation Sent");
-                                                            email.setText("");
+
                                                             view.setVisibility(View.VISIBLE);
                                                             loading_anim.setVisibility(View.INVISIBLE);
                                                             loading_anim.pauseAnimation();
-                                                            sendMail();
+                                                            if (isAValidEmail) {
+                                                                sendMail();
+                                                                Log.d("invite", "onInviteButtonPressed: Mail to " + emailAddress);
+                                                            } else {
+                                                                sendSMS();
+                                                                Log.d("invite", "onInviteButtonPressed: sms to "+emailAddress);
+                                                            }
+                                                            email.setText("");
                                                             updateSerial();
                                                             switchToAnimation();
 
@@ -205,7 +222,20 @@ public class Invite extends AppCompatActivity {
         String body = "Form Link: https://pain-free-membership.web.app/"+serial.getText().toString();
         JavaMailAPI javaMailAPI = new JavaMailAPI(context, emailText, subject, body);
         javaMailAPI.execute();
+        Log.d("invite", "sendMail: Email sent to  "+emailText);
         emailAddress= "";
+    }
+    public void sendSMS(){
+        String phoneNumber = emailAddress;
+
+            String message = "You registered for Government Science College Science Club Membership" +
+                    "\nYou Online Form Link is : https://pain-free-membership.web.app/"+serial.getText().toString();
+            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+            sendIntent.setData(Uri.parse("sms:" + phoneNumber));
+            sendIntent.putExtra("sms_body", message);
+            startActivity(sendIntent);
+            phoneNumber = "";
+
     }
 
     public void switchToAnimation(){

@@ -3,6 +3,7 @@ package com.gscsc.adminpanel;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,12 @@ public class Option extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         resizeImage(screenHeight);
         //wait for 2 seconds
+
+        // Request for SEND_SMS permission if not already granted
+        if (checkSelfPermission(android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.SEND_SMS}, 1);
+        }
+
 
     }
     public void switchToInvite(View view) {

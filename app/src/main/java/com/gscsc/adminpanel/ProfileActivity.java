@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -130,5 +131,14 @@ public class ProfileActivity extends AppCompatActivity {
 //
                     });
         }).start();
+    }
+    public void onTextClicked(View view){
+        String text = ((TextView)view).getText().toString();
+        String[] split = text.split(":");
+        String data = split[1].trim();
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("text", data);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(this, "Copied to clipboard", Toast.LENGTH_SHORT).show();
     }
 }
